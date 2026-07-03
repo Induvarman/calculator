@@ -15,8 +15,8 @@ function divide(a, b) {
 }
 
 function operate(pre, cur, op) {
-  const prev = Number(prevNum);
-  const current = Number(currentNum);
+  const prev = Number(pre);
+  const current = Number(cur);
 
   switch(op) {
     case '+': 
@@ -25,7 +25,7 @@ function operate(pre, cur, op) {
     case '-': 
       pre = sub(prev, current);
       break;
-    case '*': 
+    case 'x': 
       pre = mul(prev, current);
       break;
     case '/': 
