@@ -26,9 +26,37 @@ keyboard.addEventListener("click", e => {
   else if(e.target.matches(".AC")) {
     allClear();
   }
+  
+  else if(e.target.matches("#cancel-btn")) {
+    if (currentNum) {
+      currentNum = currentNum.slice(0, -1);
+      display.textContent = display.textContent.slice(0, -1);
+    } 
+
+    else if (operator) {
+      operator = "";
+      currentNum = prevNum; 
+      prevNum = "";
+      display.textContent = display.textContent.slice(0, -1);
+    } 
+
+    else if (prevNum) { 
+      prevNum = prevNum.slice(0, -1);
+      display.textContent = display.textContent.slice(0, -1);
+    }
+
+    if (display.textContent === "" || display.textContent === "-") {
+      display.textContent = "0";
+    }
+    
+    avoidConsecutiveOp();
+    checkDecimal();
+
+    }
 });
 
 function appendCurrentNum(keyNum) {
+  checkDecimal();
   currentNum += keyNum;
   avoidConsecutiveOp();
   if (prevNum) {
@@ -109,5 +137,14 @@ function edgeCasesOfEquals() {
   else if(!currentNum && operator && prevNum) {
     display.textContent = 0;
     return ++isEdgeCase;
+  }
+}
+
+function checkDecimal() {
+  if (currentNum.includes(".")) {
+    document.querySelector(".btn-dec").disabled = true;
+  }
+  else {
+    document.querySelector(".btn-dec").disabled = false;
   }
 }

@@ -112,6 +112,19 @@ button {
   background-color: #e7a516;
 }
 
+#eqls {
+  background-color: green;
+}
+
+.btn-zero {
+  flex: 2;
+  border-radius: 2em;
+}
+
+button:hover {
+  opacity: 80%;
+}
+
 /* footer */
 
 .footer {

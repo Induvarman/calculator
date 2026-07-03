@@ -11,8 +11,13 @@ function mul(a, b) {
 }
 
 function divide(a, b) { 
-  if (b === 0) return "Can't divide by 0!"
+  if (b === 0) return "Can't divide by 0!";
   return a / b;
+}
+
+function mod(a, b) {
+  if (b === 0) return "Can't divide by 0!";
+  return a % b;
 }
 
 function operate(pre, cur, op) {
@@ -31,6 +36,9 @@ function operate(pre, cur, op) {
       break;
     case '/': 
       pre = divide(prev, current);
+      break;
+    case '%':
+      pre = mod(prev, current);
       break;
   }
   return pre;
